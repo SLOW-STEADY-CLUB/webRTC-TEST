@@ -5,7 +5,11 @@ function App() {
   useEffect(() => {
     connectWithWebSocket()
   }, [])
-  return <div className="App">APP</div>
+  return (
+    <div className="App">
+    APPd
+   </div>
+    );
 }
 
-export default App
+export default App;

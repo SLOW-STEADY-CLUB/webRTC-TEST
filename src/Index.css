@@ -1,0 +1,14 @@
+
+html{
+    height: 100%;
+}
+
+body{
+    display: flex;
+    margin: auto;
+    align-items: center;
+    justify-content: center;
+    min-height: 100%;
+    width: 100%;
+    background-color: rgb(117, 55, 205);
+}
