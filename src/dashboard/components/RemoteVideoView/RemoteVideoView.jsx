@@ -4,7 +4,6 @@ const RemoteVideoView = ({remoteStream}) => {
     const remoteVideoRef = useRef();
     useEffect(() => { 
         if (remoteStream) {
-            console.log(remoteStream)
             const remoteVideo = remoteStream.current;
             remoteVideo.srcObject = remoteVideoRef;
 

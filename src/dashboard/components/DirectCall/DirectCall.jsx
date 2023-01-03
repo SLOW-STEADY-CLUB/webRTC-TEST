@@ -6,9 +6,7 @@ const DirectCall = (props) => {
     const {remoteStream} = props;
 
 const localStream = useSelector(state => state.call.localStream);
-console.log('localStream', localStream)
     // const remoteStream = useSelector(state => state.call.localStream);
-    console.log('remoteStream', remoteStream);
     return (
         <>
          <LocalVideoView localStream={localStream} />

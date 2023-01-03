@@ -8,7 +8,6 @@ export const dashboardSlice = createSlice({
     },
     reducers: {
         USER_NAME(state, action) {
-            console.log(action.payload);
             state.username = action.payload;
         },
         USER_ACTIVE(state, action){

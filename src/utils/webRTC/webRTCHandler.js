@@ -11,7 +11,6 @@ export const getLocalStream = () => {
 
     navigator.mediaDevices.getUserMedia(defaultConstrains)
     .then(stream => {
-        console.log(stream)
         store.dispatch(CALL_LOCAL_STREAM(stream));
         store.dispatch(CALL_STATE(callStates.CALL_AVAILABLE));
     })

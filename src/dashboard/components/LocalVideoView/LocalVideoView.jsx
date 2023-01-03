@@ -5,7 +5,6 @@ import styled from 'styled-components';
 const LocalVideoView = () => {
    
     const localStream = useSelector(state => state.call.localStream);
-    console.log(localStream)
     const localVideoRef = useRef();
     useEffect(() => { 
         const localVideo = localVideoRef.current;
