@@ -1,17 +1,22 @@
-import {createSlice} from '@reduxjs/toolkit'
+import { createSlice } from '@reduxjs/toolkit'
 
 export const dashboardSlice = createSlice({
-    name: 'dashboar',
+    name: 'dashboard',
     initialState: {
-        username: ''
+        username: "",
+        activeUsers: []
     },
     reducers: {
-        dashboardActions: (state, action) => {
-            state.username += action.username
+        USER_NAME(state, action) {
+            console.log(action.payload);
+            state.username = action.payload;
+        },
+        USER_ACTIVE(state, action){
+            state.activeUsers = action.payload;
         }
     }
 })
 
-export const { dashboardActions } = dashboardSlice.actions;
+export const { USER_NAME, USER_ACTIVE } = dashboardSlice.actions;
 export default dashboardSlice.reducer;
 

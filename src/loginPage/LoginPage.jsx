@@ -1,20 +1,50 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'; 
+import { USER_NAME } from '../store/reducers/dashboardSlice';
+import { useHistory } from 'react-router-dom';
+import { registerNewUser } from '../utils/wssConnection/wssConnection'
 //style
 import styled from 'styled-components';
 import log from '../assets/log.png'
 
+//component
+import ButtonJoin from './component/ButtonJoin';
+/**
+ * 중복체크 기능 업데이트할 때 쓰기로!
+ */
+// import ButtonSave from './component/ButtonSave';
 import InputUserName from './component/InputUserName';
+
 
 const LoginPage = () => {
   const [username, setUsername] = useState('');
+  const dispatch = useDispatch();
+  const history = useHistory();
+
+  // const userNameResult = useSelector(state => state.dashboard.username);
+
+  const handlerJoinButton = () => {
+    dispatch(USER_NAME(username));
+    history.push('/dashboard');
+    registerNewUser(username);
+  }
+
+  // useEffect(()=>{
+  //   USER_NAME(username);
+  // },[])
+  // console.log("input Test", username)
   return (
   <div>
     <STLoginBox>
-<STButtonBox>
+  <STTitleBox>
   <STLogo />
+  <STTitle>WEB-CAM</STTitle>
+  </STTitleBox>
+  {/* <ButtonSave /> */}
+<STButtonBox>
   <InputUserName username={username} setUsername={setUsername} />
-  <STLoginButton></STLoginButton>
-  <STJoinVideoButton></STJoinVideoButton>
+  <ButtonJoin handlerJoinButton={handlerJoinButton} />
+  <STHelp>help?</STHelp>
 </STButtonBox>
     </STLoginBox>
   </div>
@@ -27,46 +57,49 @@ const STLoginBox = styled.div`
   border-radius: 20px;
   background-color: #2c282d;
   
-display:flex;
-align-items:center;
-justify-content :center ;
+  
+  display:flex;
+  flex-direction: column;
+  align-items:center;
+  justify-content :center ;
 `;
+const STTitleBox = styled.div`
+  margin-top: 20px;
+  margin-bottom: 0px;
+`
 const STLogo = styled.div`
 /* background-color: #363633; */
-color: white;
-background-position: center;
-background-size: cover;
-width: 250px;
-height:250px;
-border-radius: 20px;
+  background-position: center;
+  background-size: cover;
+  width: 250px;
+  height:250px;
+  border-radius: 20px;
   background-image: url(${log});
-  margin: 0px auto 70px auto;
   
+`;
+const STTitle = styled.h1`
+  color:beige;
+  text-align: center;
 `
 
 const STButtonBox = styled.div`
   display: flex;
   flex-direction: column;
-  margin: auto;
-`
-const STLoginButton = styled.button`
-  background-color: rgb(117, 55, 205);
-  width: 250px;
-  height: 70px;
-  border-radius: 20px;
+  align-items: center;
+  justify-content: center;
+
   
-  margin-top: 20px;
-
 `
-const STJoinVideoButton = styled.button`
-background-color: rgb(117, 55, 205);
-width: 250px;
-  height: 70px;
-  border-radius: 20px;
+
+
+const STHelp = styled.div`
+  margin-top: 20px;
+  color: white;
+  opacity: 0.5;
+  text-align: center;
+  cursor: pointer;
   
-  margin-top: 20px;
-
 `
 
 
-export default LoginPage
+export default LoginPage;

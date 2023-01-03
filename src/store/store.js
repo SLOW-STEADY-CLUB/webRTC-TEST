@@ -1,7 +1,12 @@
-import { configureStore } from '@reduxjs/toolkit'
-import dashboardReducer from './reducers/dashboardSlice'
+import { configureStore, getDefaultMiddleware } from '@reduxjs/toolkit';
+import dashboard from './reducers/dashboardSlice';
+import call from './reducers/callSlice';
 export default configureStore({
     reducer: {
-        dashboard: dashboardReducer
-    }
+        dashboard,
+        call,
+    },
+    middleware: getDefaultMiddleware({
+        serializableCheck: false,
+      }),
   })
