@@ -1,6 +1,11 @@
-# Mac file
-.DS_Store
-
-# node_modules
-/node_modules
-node_modules
+/nbproject/
+/.idea/*
+*.tmlanguage.cache
+*.tmPreferences.cache
+*.stTheme.cache
+*.sublime-workspace
+*.sublime-project
+node_modules/
+bin/
+obj/
+.vs/
