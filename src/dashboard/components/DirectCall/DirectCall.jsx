@@ -5,7 +5,12 @@ import RemoteVideoView from '../RemoteVideoView/RemoteVideoView';
 const DirectCall = (props) => {
     const {remoteStream} = props;
 
-const localStream = useSelector(state => state.call.localStream);
+const { localStream, callState, callerUsername } = useSelector(state => ({
+    localStream: state.call.localStream,
+    callState: state.call.callState,
+    callerUsername: state.call.callState,
+}
+));
     // const remoteStream = useSelector(state => state.call.localStream);
     return (
         <>

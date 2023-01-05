@@ -1,13 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
-const CallingDialog = () => {
+const CallRejectedDialog = () => {
     return (
-        <STDialog>
-            <STUsername>
-                Calling
-            </STUsername>
-            <STButton></STButton>
-        </STDialog>
+        <dSTDialogiv>
+            Call rejected
+        </dSTDialogiv>
     );
 };
 
@@ -21,13 +18,7 @@ const STDialog = styled.div`
     align-items: center;
     justify-content: center;
     border-radius: 8px;
-`
-const STUsername = styled.div`
-    font-size: 30px;
 
 `
-const STButton = styled.div`
-    margin-top: 30px;
-`
 
-export default CallingDialog;
+export default CallRejectedDialog;

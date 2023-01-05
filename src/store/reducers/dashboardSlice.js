@@ -7,10 +7,10 @@ export const dashboardSlice = createSlice({
         activeUsers: []
     },
     reducers: {
-        USER_NAME(state, action) {
+        USER_NAME: (state, action) => {
             state.username = action.payload;
         },
-        USER_ACTIVE(state, action){
+        USER_ACTIVE: (state, action) => {
             state.activeUsers = action.payload;
         }
     }

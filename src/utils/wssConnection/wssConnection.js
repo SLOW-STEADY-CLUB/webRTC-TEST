@@ -14,7 +14,7 @@
 import {io} from 'socket.io-client';
 import { USER_ACTIVE } from '../../store/reducers/dashboardSlice';
 import store from '../../store/store'
-
+import * as webRTCHandler from '../webRTC/webRTCHandler'
 const broadcastEventTypes = {
   USER_ACTIVE: 'USER_ACTIVE',
   GROUP_CALL_ROOMS: 'GROUP_CALL_ROOMS'
@@ -29,7 +29,12 @@ export const initSocketConnection = () => {
 };
 socket.on('broadcast', (data)=> {
   handleBroadcastEvent(data);
-})
+});
+
+//listeners related with direct call
+socket.on('pre-offer', (data) => {
+  webRTCHandler.handleBroadcastEvent(data)
+});
 
 export const registerNewUser = (username) => {
 
@@ -38,6 +43,10 @@ export const registerNewUser = (username) => {
     socketId: socket.id
   });
 }
+
+export const sendPreOffer = (data) => {
+  socket.emit('pre-offer', data);
+};
 
 const handleBroadcastEvent = (data) => {
   switch (data.event) {
