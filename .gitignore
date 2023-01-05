@@ -1,5 +1,6 @@
-#Mac file
-*/.DS_Store
+# Mac file
+.DS_Store
 
-#node_modules
-*/node_modules
+# node_modules
+/node_modules
+node_modules
